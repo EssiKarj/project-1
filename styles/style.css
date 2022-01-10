@@ -1,0 +1,133 @@
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+div{
+  border: 1px solid green;
+
+}
+
+.title-and-rules-container
+
+.title-and-rules-container, .gameplay-container{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+  border: 1px solid skyblue;
+  
+}
+
+.characters-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.characters img{
+  height: 15vh;
+  width: 15vh;
+}
+
+.lives-and-keys-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.lives-keys{
+  border: 2px solid pink;
+  border-radius: 10px;
+}
+
+span{
+  color: tomato;
+}
+
+.gameplay-container{
+    height: 100vh;
+    display: flex;;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamegrid-container{
+  background-image: url("../images/sand.jpg");
+}
+
+.gamegrid{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  height: 600px;
+  width: 600px;
+  border: 1px solid violet;
+}
+
+.gamegrid div{
+  border: 1px solid turquoise;
+  height: 58px;
+  width: 58px;
+  display: flex;
+}
+
+.innerCell{
+  flex-grow: 1;
+}
+
+.gamegrid div img{
+  height: 58px;
+  width: 58px;
+}
+
+.forestClass{
+  background-image: url("../images/forest.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.6;
+}
+
+.keyClass{
+  background-image: url("../images/key.PNG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.monsterOneClass{
+  background-image: url("../images/monster1.PNG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.monsterTwoClass{
+  background-image: url("../images/monster2.PNG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.characterOneClass{
+  background-image: url("../images/char1.PNG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.characterTwoClass{
+  background-image: url("../images/char2.PNG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.characterThreeClass{
+  background-image: url("../images/char3.PNG");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}

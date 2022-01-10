@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Monster game</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <script src="./scripts/script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Libre+Franklin:wght@300&family=Montserrat:wght@300&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div class="title-and-rules-container">
+    <div id="title">
+      <h1>Monster crossing</h1>
+    </div>
+    <div id="rules">
+      <h3>Welcome, let's play a game. Rules are simple:</h3>
+      <section>
+        <ul>
+          <li>Collect 5 keys to win, before losing your lives.</li>
+          <li>Beware of the monsters that roam this land, they'll take a life if you cross with one.</li>
+          <li>You can hide in forests from the monsters but don't stay too long because you never know what is lurking
+            in there.</li>
+          <li>Use arrow keys to move.</li>
+        </ul>
+        <div class="choose-container">
+          <p>Choose your character:</p>
+          <div class="characters-container">
+            <div class="characters" id="char1"><img src="./images/char1.PNG"
+                alt="character one with orange skin and green hair"></div>
+            <div class="characters" id="char2"><img src="./images/char2.PNG"
+                alt="character two with blue skin and green hair"></div>
+            <div class="characters" id="char3"><img src="./images/char3.PNG"
+                alt="character three with pink skin and yellow hair"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="gameplay-container">
+    <div class="lives-and-keys-container">
+      <div class="lives-keys">Lives: <span id="lives"></span></div>
+      <div class="lives-keys">Keys: <span id="keys"></span></div>
+    </div>
+    <div class="gamegrid-container">
+      <div class="gamegrid"></div>
+    </div>
+  </div>
+</body>
+
+</html>
