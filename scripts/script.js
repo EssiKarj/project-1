@@ -274,6 +274,7 @@ function init() {
     if (characterPosition === startingPosition) {
       removeChar(characterPosition)
       charLives.classList.remove(charNum)
+
       if (i.id === 'char3') {
         charNum = 'characterThreeClass'
       } else if (i.id === 'char2') {
@@ -281,6 +282,7 @@ function init() {
       } else {
         charNum = 'characterOneClass'
       }
+
       charLives.classList.add(charNum)
       placeCharacter(characterPosition)
     }

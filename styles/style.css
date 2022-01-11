@@ -5,17 +5,49 @@ body{
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+  background: #C6D57E;
+  color: #362222;
 }
 
+h1{
+  font-size: 55px;
+  background: #A2CDCD;
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+}
 
-.title-and-rules-container
+section{
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button{
+  font-size: 30px;
+  border-radius: 10px;
+  width: 30%;
+  border: 2px solid #D57E7E;
+  color: #362222;
+}
+
 
 .title-and-rules-container, .gameplay-container{
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;
-  border: 1px solid skyblue;
-  
+  justify-content:space-between;
+}
+
+.title-and-rules-container{
+  margin: 20px auto;
+}
+
+.rules{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .characters-container{
@@ -34,12 +66,15 @@ body{
 }
 
 .lives-keys{
-  border: 2px solid pink;
+  height: 50px;
+  width: 80px;
+  border: 2px solid #D57E7E;
   border-radius: 10px;
+  background: #FFE1AF;
 }
 
 span{
-  color: tomato;
+  font-size: large;
 }
 
 .gameplay-container{
@@ -51,11 +86,13 @@ span{
 
 .lives-keys{
   display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .lives-keys img{
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
 }
 
 .gamegrid-container{
@@ -66,7 +103,7 @@ span{
 #game-message{
   display: none;
   order: 1;
-  background: blueviolet;
+  background: #A2CDCD;
   border-radius: 10px;
   position: absolute;
   height: 200px;
@@ -84,7 +121,8 @@ span{
   align-items: center;
   height: 600px;
   width: 600px;
-  border: 1px solid violet;
+  border: 3px solid #362222;
+  
 }
 
 .gamegrid div{
@@ -153,11 +191,20 @@ span{
   background-size: cover;
 }
 
+.selectionBorder{
+  border: 2px solid #C6D57E;
+}
+
+.selectionBorder:hover{
+  border: 2px solid #D57E7E;
+  border-radius: 10px;
+}
+
 .sandClass {
-  background: blanchedalmond;
+  background: #FFE1AF;
 }
 
 #characterLives{
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
 }
