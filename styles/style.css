@@ -4,12 +4,9 @@ body{
   justify-content: space-around;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
-div{
-  border: 1px solid green;
-
-}
 
 .title-and-rules-container
 
@@ -52,8 +49,17 @@ span{
     align-items: center;
 }
 
+.lives-keys{
+  display: flex;
+}
+
+.lives-keys img{
+  height: 40px;
+  width: 40px;
+}
+
 .gamegrid-container{
-  background-image: url("../images/sand.jpg");
+  background: rgb(172, 173, 174);
 }
 
 .gamegrid{
@@ -67,10 +73,10 @@ span{
 }
 
 .gamegrid div{
-  border: 1px solid turquoise;
-  height: 58px;
-  width: 58px;
+  height: 60px;
+  width: 60px;
   display: flex;
+  flex-grow: 1;
 }
 
 .innerCell{
@@ -78,8 +84,8 @@ span{
 }
 
 .gamegrid div img{
-  height: 58px;
-  width: 58px;
+  height: 10%;
+  width: 10%;
 }
 
 .forestClass{
@@ -130,4 +136,13 @@ span{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.sandClass {
+  background: blanchedalmond;
+}
+
+#characterLives{
+  height: 40px;
+  width: 40px;
 }

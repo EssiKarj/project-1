@@ -18,13 +18,15 @@ function init() {
   let keyAmount = keys + 5
 
   const characters = document.querySelectorAll('.characters')
+  const charLives = document.querySelector('#characterLives')
 
   const gameGrid = document.querySelector('.gamegrid')
   const width = 10
   const cellCount = width * width
   const cellArray = []
 
-  let forestCells = [7, 8, 9, 16, 17, 18, 27, 46, 55, 56, 57, 67, 68, 69, 78, 79, 80, 70, 71, 60, 61, 62, 50, 51, 41, 95, 96, 84, , 11, 12, 2]
+  const forestCells = [7, 8, 9, 23, 16, 17, 18, 27, 46, 55, 56, 57, 67, 68, 69, 78, 79, 80, 70, 71, 60, 61, 62, 50, 51, 41, 95, 96, 84, , 11, 12, 2]
+  const sandCells = [0, 1, 10, 49, 58, 59, 93, 94]
 
   const movementNums = [1, -1, 10, -10]
 
@@ -42,6 +44,7 @@ function init() {
     }
 
     createForest()
+    createSand()
     placeMonster(monsterOneStart)
     placeMonster(monsterTwoStart)
     placeCharacter(startingPosition)
@@ -54,22 +57,15 @@ function init() {
   }
 
 
+
   // Adds character to the grid and accepts position as the argument
   const placeCharacter = (position) => {
-    //const character = document.createElement('img')
-    //character.src = `./images/char${charNum}.jpg`
-    //character.id = 'character'
-    //cellArray[position].appendChild(character)
-    //cellArray[position].classList.add('characterClass')
     const charChild = cellArray[position].childNodes[0]
     charChild.classList.add(charNum)
   }
 
   // Removes character from the grid
   const removeChar = (position) => {
-    //if (cellArray[position].hasChildNodes()) {
-    //cellArray[position].removeChild(cellArray[position].querySelector('#character'))
-    //}
     cellArray[position].childNodes[0].classList.remove(charNum)
   }
 
@@ -80,19 +76,14 @@ function init() {
     })
   }
 
+  const createSand = () => {
+    cellArray.map((cell, index) => {
+      if (sandCells.includes(index)) cell.classList.add('sandClass')
+    })
+  }
+
   // places monster(s) on the grid
   const placeMonster = (position) => {
-    //if (position === monsterOnePosition) {
-    //  const oneMonster = document.createElement('img')
-    //  oneMonster.src = "./images/monster1.jpg"
-    //  oneMonster.id = "oneMonster"
-    //  cellArray[position].appendChild(oneMonster)
-    //} else {
-    //  const twoMonster = document.createElement('img')
-    //  twoMonster.src = "./images/monster2.jpg"
-    //  twoMonster.id = "twoMonster"
-    //  cellArray[position].appendChild(twoMonster)
-    //}
     const monsterChild = cellArray[position].childNodes[0]
     if (position === monsterOnePosition) {
       monsterChild.classList.add('monsterOneClass')
@@ -100,17 +91,18 @@ function init() {
       monsterChild.classList.add('monsterTwoClass')
     }
 
+    if (monsterOnePosition === characterPosition || monsterTwoPosition === characterPosition) {
+      lives--
+      document.getElementById('lives').innerText = lives
+      if (lives === 0) {
+        resetGame()
+      }
+    }
+
   }
 
   // removes the monsterClass from previous cell
   const removeMonster = (position) => {
-    //if (cellArray[position].hasChildNodes()) {
-    //if (position === monsterOnePosition) {
-    //  cellArray[position].removeChild(cellArray[position].querySelector('#oneMonster'))
-    //} else {
-    //  cellArray[position].removeChild(cellArray[position].querySelector('#twoMonster'))
-    //}
-    //}
     if (position === monsterOnePosition) {
       cellArray[position].childNodes[0].classList.remove('monsterOneClass')
     } else {
@@ -123,10 +115,6 @@ function init() {
     if (keyPosition === characterPosition) {
       keyPlacement()
     }
-    //const keyImage = document.createElement('img')
-    //keyImage.src = "./images/key.jpg"
-    //keyImage.id = "keyImage"
-    //cellArray[keyPosition].appendChild(keyImage)
     cellArray[keyPosition].childNodes[0].classList.add('keyClass')
   }
 
@@ -218,6 +206,7 @@ function init() {
       if (forestRandom === 1) {
         lives--
         document.getElementById('lives').innerText = lives
+        //cellArray[characterPosition].classList.add('pulse')
         if (lives === 0) {
           resetGame()
         }
@@ -235,7 +224,6 @@ function init() {
 
     // Condition for collecting keys
     if (keyPosition === characterPosition) {
-      //cellArray[keyPosition].removeChild(cellArray[position].querySelector('#keyImage'))
       cellArray[keyPosition].childNodes[0].classList.remove('keyClass')
       console.log('got it')
       keyPlacement()
@@ -253,7 +241,7 @@ function init() {
   characters.forEach(i => i.addEventListener('click', () => {
     if (characterPosition === startingPosition) {
       removeChar(characterPosition)
-      console.log('choosing?', i.classList)
+      charLives.classList.remove(charNum)
       if (i.id === 'char3') {
         charNum = 'characterThreeClass'
       } else if (i.id === 'char2') {
@@ -261,6 +249,7 @@ function init() {
       } else {
         charNum = 'characterOneClass'
       }
+      charLives.classList.add(charNum)
       placeCharacter(characterPosition)
     }
   }))
