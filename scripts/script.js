@@ -3,19 +3,23 @@ function init() {
   //Variables global scope
   const startingPosition = 90
   let characterPosition = startingPosition
-
   let charNum = 'characterOneClass'
 
   const monsterOneStart = 3
   let monsterOnePosition = monsterOneStart
   const monsterTwoStart = 65
   let monsterTwoPosition = monsterTwoStart
+  let monsterInterval
 
   let keyPosition
 
   let lives = 5
   let keys = 0
   let keyAmount = keys + 5
+
+  const startButton = document.querySelector('#start-button')
+
+  const gameMessageBox = document.getElementById('game-message')
 
   const characters = document.querySelectorAll('.characters')
   const charLives = document.querySelector('#characterLives')
@@ -29,6 +33,7 @@ function init() {
   const sandCells = [0, 1, 10, 49, 58, 59, 93, 94]
 
   const movementNums = [1, -1, 10, -10]
+
 
   // Creates the grid and stores each cell in to cellArray 
   // Includes functions that place character, monsters and key on to the grid
@@ -45,17 +50,31 @@ function init() {
 
     createForest()
     createSand()
-    placeMonster(monsterOneStart)
-    placeMonster(monsterTwoStart)
-    placeCharacter(startingPosition)
     keyPlacement()
-    setInterval(() => {
+    placeCharacter(startingPosition)
+    //monsterInterval()
+  }
+
+  //Starts the game once start button has been pressed
+  const startGame = () => {
+    if (gameMessageBox.style.display === 'block') {
+      gameMessageBox.style.display = 'none'
+    }
+    if (startButton.disabled === false) {
+      startButton.disabled = true
+      placeMonster(monsterOneStart)
+      placeMonster(monsterTwoStart)
+    }
+    setMonsterInterval()
+  }
+
+  // Interval to allow monster movements
+  const setMonsterInterval = () => {
+    monsterInterval = setInterval(() => {
       moveMonsterOne()
       moveMonsterTwo()
     }, 1000)
-
   }
-
 
 
   // Adds character to the grid and accepts position as the argument
@@ -76,6 +95,7 @@ function init() {
     })
   }
 
+  //Creates sand areas in the grid
   const createSand = () => {
     cellArray.map((cell, index) => {
       if (sandCells.includes(index)) cell.classList.add('sandClass')
@@ -95,6 +115,8 @@ function init() {
       lives--
       document.getElementById('lives').innerText = lives
       if (lives === 0) {
+        gameMessageBox.style.display = 'block'
+        gameMessageBox.innerText = 'GAME OVER'
         resetGame()
       }
     }
@@ -110,6 +132,7 @@ function init() {
     }
   }
 
+  //Places key in the grid within a random cell
   const keyPlacement = () => {
     keyPosition = randomizer(cellCount - 1)
     if (keyPosition === characterPosition) {
@@ -123,6 +146,7 @@ function init() {
     return Math.floor(Math.random() * limit)
   }
 
+  // Reset function to start again, triggered in game ending situations
   const resetGame = () => {
     lives = 5
     keys = 0
@@ -132,10 +156,12 @@ function init() {
     removeMonster(monsterTwoPosition)
     removeChar(characterPosition)
     placeCharacter(startingPosition)
+    //keyPlacement()
     characterPosition = startingPosition
     monsterOnePosition = monsterOneStart
     monsterTwoPosition = monsterTwoStart
-
+    startButton.disabled = false
+    clearInterval(monsterInterval)
   }
 
   // function that randomly moves the position of the monster with condition to not enter forest areas
@@ -150,7 +176,6 @@ function init() {
     } else if (direction === -1 && monsterOnePosition % width === 0) {
       moveMonsterOne()
     } else if (forestCells.includes(tempPosition) || monsterTwoPosition === tempPosition) {
-      console.log('oops')
       moveMonsterOne()
     } else {
       removeMonster(monsterOnePosition)
@@ -208,6 +233,8 @@ function init() {
         document.getElementById('lives').innerText = lives
         //cellArray[characterPosition].classList.add('pulse')
         if (lives === 0) {
+          gameMessageBox.style.display = 'block'
+          gameMessageBox.innerText = 'GAME OVER'
           resetGame()
         }
       }
@@ -218,6 +245,8 @@ function init() {
       lives--
       document.getElementById('lives').innerText = lives
       if (lives === 0) {
+        gameMessageBox.style.display = 'block'
+        gameMessageBox.innerText = 'GAME OVER'
         resetGame()
       }
     }
@@ -230,6 +259,9 @@ function init() {
       keys++
       document.getElementById('keys').innerText = keys
       if (keys === 5) {
+        console.log('you won!')
+        gameMessageBox.style.display = 'block'
+        gameMessageBox.innerText = 'YOU WON!'
         resetGame()
       }
     }
@@ -261,6 +293,8 @@ function init() {
 
   document.getElementById('lives').innerText = lives
   document.getElementById('keys').innerText = keys
+
+  startButton.addEventListener('click', startGame)
 
 }
 

@@ -60,6 +60,21 @@ span{
 
 .gamegrid-container{
   background: rgb(172, 173, 174);
+  display: flex;
+}
+
+#game-message{
+  display: none;
+  order: 1;
+  background: blueviolet;
+  border-radius: 10px;
+  position: absolute;
+  height: 200px;
+  width: 400px;
+  margin-top: 200px;
+  margin-left: 100px;
+  text-align: center;
+  font-size: 50px;
 }
 
 .gamegrid{
