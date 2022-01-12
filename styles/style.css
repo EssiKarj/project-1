@@ -28,12 +28,17 @@ h1{
 }
 
 h3{
-  margin-left: 6vh;
+  margin: 0 auto 15px auto;
+  padding-top: 55px;
 }
 
 h3, ul{
   border-radius: 10px;
-  width: 80%;
+}
+
+p{
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 section{
@@ -46,6 +51,9 @@ section{
 
 ul{
   text-align: left;
+  padding: 10px 100px;
+  font-size: 15px;
+  margin-top: 15px;
 }
 
 button{
@@ -79,7 +87,7 @@ button{
   background-image: url('../images/rules-background.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 100% 100%;
   margin: 4px;
   font-weight: 100;
 }
@@ -87,6 +95,7 @@ button{
 .characters-container{
   display: flex;
   justify-content: space-around;
+  margin-bottom: 5px;
 }
 
 .characters img{
@@ -111,7 +120,8 @@ button{
 }
 
 span{
-  font-size: large;
+  font-size: 30px;
+  margin-right: 10px;
 }
 
 .gameplay-container{
@@ -265,4 +275,10 @@ span{
 #characterLives{
   height: 50px;
   width: 50px;
+}
+
+@media screen and (max-width: 1350px) {
+  h1{
+    font-size: 40px;
+  }
 }
