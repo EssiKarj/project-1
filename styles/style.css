@@ -6,14 +6,33 @@ body{
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   background: #C6D57E;
-  color: #362222;
+  color: #563d3d;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1{
-  font-size: 55px;
+  font-size: 50px;
   background: #A2CDCD;
+  border-radius: 20px;
+  padding: 15px;
+  width: 75%;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  font-family: 'Balsamiq Sans', cursive;
+}
+
+h3{
+  margin-left: 6vh;
+}
+
+h3, ul{
   border-radius: 10px;
-  padding: 20px;
   width: 80%;
 }
 
@@ -25,29 +44,44 @@ section{
   align-items: center;
 }
 
+ul{
+  text-align: left;
+}
+
 button{
   font-size: 30px;
   border-radius: 10px;
-  width: 30%;
-  border: 2px solid #D57E7E;
-  color: #362222;
+  width: 165px;
+  background-color:  #D57E7E;
+  color: #FFE1AF;
+  font-family: 'Balsamiq Sans', cursive;
+  box-shadow: 2%;
+  border: none;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
 }
 
 
 .title-and-rules-container, .gameplay-container{
-  display: flex;
   flex-direction: column;
-  justify-content:space-between;
 }
 
 .title-and-rules-container{
-  margin: 20px auto;
+  width: 40%;
+  height: 100vh;
 }
 
 .rules{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  background-image: url('../images/rules-background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 4px;
+  font-weight: 100;
 }
 
 .characters-container{
@@ -68,9 +102,12 @@ button{
 .lives-keys{
   height: 50px;
   width: 80px;
-  border: 2px solid #D57E7E;
   border-radius: 10px;
   background: #FFE1AF;
+  margin: 0 50px 10px 50px;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
 }
 
 span{
@@ -96,22 +133,32 @@ span{
 }
 
 .gamegrid-container{
-  background: rgb(172, 173, 174);
+  background-image: url('../images/gamegrid-bg.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   display: flex;
+  width: 680px;
+  height: 680px;
+  justify-content: center;
+  align-items: center;
 }
 
 #game-message{
   display: none;
   order: 1;
   background: #A2CDCD;
-  border-radius: 10px;
+  border-radius: 20px;
   position: absolute;
   height: 200px;
   width: 400px;
-  margin-top: 200px;
-  margin-left: 100px;
+  padding-top: 115px;
   text-align: center;
   font-size: 50px;
+  font-family: 'Balsamiq Sans', cursive;
+  -webkit-box-shadow: 3px 3px 6px 0px rgb(0 0 0 / 29%);
+  -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  box-shadow: 3px 3px 6px 0px rgb(0 0 0 / 29%);
 }
 
 .gamegrid{
@@ -121,8 +168,15 @@ span{
   align-items: center;
   height: 600px;
   width: 600px;
-  border: 3px solid #362222;
-  
+  border: 3px solid #A2CDCD;
+  background-image: url('../images/game-ground.png');
+  filter: brightness();
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  -moz-box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.29);
 }
 
 .gamegrid div{
@@ -150,7 +204,7 @@ span{
 }
 
 .keyClass{
-  background-image: url("../images/key.PNG");
+  background-image: url("../images/key2.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -192,16 +246,20 @@ span{
 }
 
 .selectionBorder{
-  border: 2px solid #C6D57E;
+  margin: 0 10px;
 }
 
 .selectionBorder:hover{
-  border: 2px solid #D57E7E;
+  outline: 2px solid #D57E7E;
+  background: #FFE1AF;
   border-radius: 10px;
 }
 
 .sandClass {
-  background: #FFE1AF;
+  background-image: url('../images/sand2.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 #characterLives{

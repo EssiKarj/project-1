@@ -1,6 +1,8 @@
 function init() {
 
   //Variables global scope
+  let gameInProgress = false
+
   const startingPosition = 90
   let characterPosition = startingPosition
   let charNum = 'characterOneClass'
@@ -66,6 +68,7 @@ function init() {
       placeMonster(monsterTwoStart)
     }
     setMonsterInterval()
+    gameInProgress = true
   }
 
   // Interval to allow monster movements
@@ -117,6 +120,7 @@ function init() {
       if (lives === 0) {
         gameMessageBox.style.display = 'block'
         gameMessageBox.innerText = 'GAME OVER'
+        gameInProgress = false
         resetGame()
       }
     }
@@ -148,6 +152,7 @@ function init() {
 
   // Reset function to start again, triggered in game ending situations
   const resetGame = () => {
+    gameInProgress = false
     lives = 5
     keys = 0
     document.getElementById('lives').innerText = lives
@@ -211,6 +216,8 @@ function init() {
     const left = 37
     const up = 38
     const down = 40
+
+    if (!gameInProgress) return
 
     removeChar(characterPosition)
 
