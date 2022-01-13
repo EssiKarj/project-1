@@ -17,7 +17,6 @@ function init() {
 
   let lives = 5
   let keys = 0
-  let keyAmount = keys + 5
 
   const startButton = document.querySelector('#start-button')
 
@@ -48,7 +47,6 @@ function init() {
       const cell = document.createElement('div')
       const innerCell = document.createElement('div')
       innerCell.classList.add('innerCell')
-      //cell.innerText = i
       cell.appendChild(innerCell)
       gameGrid.appendChild(cell)
       cellArray.push(cell)
@@ -58,7 +56,6 @@ function init() {
     createSand()
     keyPlacement()
     placeCharacter(startingPosition)
-    //monsterInterval()
   }
 
   //Starts the game once start button has been pressed
@@ -165,12 +162,14 @@ function init() {
     document.getElementById('keys').innerText = keys
     removeMonster(monsterOnePosition)
     removeMonster(monsterTwoPosition)
+
     removeChar(characterPosition)
     placeCharacter(startingPosition)
-    //keyPlacement()
+
     characterPosition = startingPosition
     monsterOnePosition = monsterOneStart
     monsterTwoPosition = monsterTwoStart
+
     startButton.disabled = false
     clearInterval(monsterInterval)
   }
@@ -240,7 +239,7 @@ function init() {
     // Condition for forest area to remove a live if randomizer value is 1
     if (forestCells.includes(characterPosition)) {
       let forestRandom = randomizer(3)
-      console.log('in forest')
+
       if (forestRandom === 1) {
         lives--
         audioFile.src = './sounds/forest-life-lost.wav'
@@ -261,6 +260,7 @@ function init() {
       audioFile.src = './sounds/monster-noise.wav'
       audioFile.play()
       document.getElementById('lives').innerText = lives
+
       if (lives === 0) {
         gameMessageBox.style.display = 'block'
         gameMessageBox.innerText = 'GAME OVER'
@@ -271,15 +271,16 @@ function init() {
     // Condition for collecting keys
     if (keyPosition === characterPosition) {
       cellArray[keyPosition].childNodes[0].classList.remove('keyClass')
-      console.log('got it')
       keyPlacement()
       keys++
       audioFile.src = './sounds/key-noise.wav'
       audioFile.play()
       document.getElementById('keys').innerText = keys
+
       if (keys === 5) {
         gameMessageBox.style.display = 'block'
         gameMessageBox.innerText = 'YOU WON!'
+
         audioFile.src = './sounds/win-noise.wav'
         audioFile.play()
         resetGame()
