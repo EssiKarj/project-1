@@ -179,7 +179,7 @@ span{
   height: 600px;
   width: 600px;
   border: 3px solid #A2CDCD;
-  background-image: url('../images/game-ground.png');
+  background-image: url('../images/gameground4.png');
   filter: brightness();
   background-repeat: no-repeat;
   background-position: center;
@@ -214,7 +214,7 @@ span{
 }
 
 .keyClass{
-  background-image: url("../images/key2.png");
+  background-image: url("../images/key3.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -266,7 +266,7 @@ span{
 }
 
 .sandClass {
-  background-image: url('../images/sand2.png');
+  background-image: url('../images/sand3.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

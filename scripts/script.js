@@ -27,6 +27,7 @@ function init() {
   const charLives = document.querySelector('#characterLives')
 
   const audioFile = document.querySelector('audio')
+  audioFile.volume = 0.1
 
   const gameGrid = document.querySelector('.gamegrid')
   const width = 10
@@ -245,7 +246,7 @@ function init() {
         audioFile.src = './sounds/forest-life-lost.wav'
         audioFile.play()
         document.getElementById('lives').innerText = lives
-        //cellArray[characterPosition].classList.add('pulse')
+
         if (lives === 0) {
           gameMessageBox.style.display = 'block'
           gameMessageBox.innerText = 'GAME OVER'
