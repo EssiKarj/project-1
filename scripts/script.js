@@ -58,7 +58,8 @@ function init() {
     placeCharacter(startingPosition)
   }
 
-  //Starts the game once start button has been pressed
+  // Starts the game once start button has been pressed
+  // Calls the interval for monsters movement
   const startGame = () => {
     if (gameMessageBox.style.display === 'block') {
       gameMessageBox.style.display = 'none'
