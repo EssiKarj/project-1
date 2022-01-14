@@ -81,6 +81,44 @@ function init() {
     }, 1000)
   }
 
+  // Contains condition for collecting keys
+  const collectKey = () => {
+    cellArray[keyPosition].childNodes[0].classList.remove('keyClass')
+    keyPlacement()
+    keys++
+    audioFile.src = './sounds/key-noise.wav'
+    audioFile.play()
+    document.getElementById('keys').innerText = keys
+    isGameOver()
+  }
+
+  // Contains actions when a life is lost
+  const losingLife = (cause) => {
+    lives--
+    audioFile.src = `./sounds/${cause}-noise.wav`
+    audioFile.play()
+    document.getElementById('lives').innerText = lives
+    isGameOver()
+  }
+
+  // Checks if condittions are met to end the game
+  const isGameOver = () => {
+    if (lives === 0) {
+      gameMessageBox.style.display = 'block'
+      gameMessageBox.innerText = 'GAME OVER'
+      gameInProgress = false
+      resetGame()
+    }
+    if (keys === 5) {
+      gameMessageBox.style.display = 'block'
+      gameMessageBox.innerText = 'YOU WON!'
+
+      audioFile.src = './sounds/win-noise.wav'
+      audioFile.play()
+      resetGame()
+    }
+  }
+
 
   // Adds character to the grid and accepts position as the argument
   const placeCharacter = (position) => {
@@ -117,19 +155,10 @@ function init() {
     }
 
     if (monsterOnePosition === characterPosition || monsterTwoPosition === characterPosition) {
-      lives--
-      audioFile.src = './sounds/monster-noise.wav'
-      audioFile.play()
-      document.getElementById('lives').innerText = lives
-      if (lives === 0) {
-        gameMessageBox.style.display = 'block'
-        gameMessageBox.innerText = 'GAME OVER'
-        gameInProgress = false
-        resetGame()
-      }
+      losingLife('monster')
     }
-
   }
+
 
   // removes the monsterClass from previous cell
   const removeMonster = (position) => {
@@ -242,54 +271,23 @@ function init() {
       let forestRandom = randomizer(3)
 
       if (forestRandom === 1) {
-        lives--
-        audioFile.src = './sounds/forest-life-lost.wav'
-        audioFile.play()
-        document.getElementById('lives').innerText = lives
-
-        if (lives === 0) {
-          gameMessageBox.style.display = 'block'
-          gameMessageBox.innerText = 'GAME OVER'
-          resetGame()
-        }
+        losingLife('forest')
       }
     }
 
     // Condition for if character clashes with Monsters
     if (monsterOnePosition === characterPosition || monsterTwoPosition === characterPosition) {
-      lives--
-      audioFile.src = './sounds/monster-noise.wav'
-      audioFile.play()
-      document.getElementById('lives').innerText = lives
-
-      if (lives === 0) {
-        gameMessageBox.style.display = 'block'
-        gameMessageBox.innerText = 'GAME OVER'
-        resetGame()
-      }
+      losingLife('monster')
     }
 
     // Condition for collecting keys
     if (keyPosition === characterPosition) {
-      cellArray[keyPosition].childNodes[0].classList.remove('keyClass')
-      keyPlacement()
-      keys++
-      audioFile.src = './sounds/key-noise.wav'
-      audioFile.play()
-      document.getElementById('keys').innerText = keys
-
-      if (keys === 5) {
-        gameMessageBox.style.display = 'block'
-        gameMessageBox.innerText = 'YOU WON!'
-
-        audioFile.src = './sounds/win-noise.wav'
-        audioFile.play()
-        resetGame()
-      }
+      collectKey()
     }
 
     placeCharacter(characterPosition)
   }
+
 
   // Event listener for keyboard keys
   characters.forEach(i => i.addEventListener('click', () => {
@@ -309,7 +307,6 @@ function init() {
       placeCharacter(characterPosition)
     }
   }))
-
 
   document.addEventListener('keydown', movingCharacter)
 
